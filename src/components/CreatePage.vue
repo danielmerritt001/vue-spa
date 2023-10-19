@@ -80,6 +80,11 @@ export default {
         },
         published: this.published,
       });
+      this.pageTitle = "";
+      this.content = "";
+      this.linkText = "";
+      this.linkUrl = "";
+      this.published = true;
     },
   },
 };

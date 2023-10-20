@@ -3,7 +3,7 @@
     :class="[`navbar-${theme}`, `bg-${theme}`, 'navbar', 'navbar-expand-lg']"
   >
     <div class="container-fluid">
-      <a href="#" class="navbar-brand">MyVue</a>
+      <a href="#" class="navbar-brand">ToDoVue</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li
           v-for="(page, index) in publishedPages"

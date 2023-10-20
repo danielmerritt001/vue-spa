@@ -48,6 +48,15 @@
 </template>
 <script>
 export default {
+  emits: {
+    // eslint-disable-next-line vue/return-in-emits-validator
+    pageCreated({ pageTitle, content, link }) {
+      if (!pageTitle || !content || !link.text || !link.url) {
+        return false;
+      }
+      return true;
+    },
+  },
   props: ["pageCreated"],
   computed: {
     isFormInvalid() {
@@ -71,7 +80,8 @@ export default {
         alert("Please fill out the form");
         return;
       }
-      this.pageCreated({
+
+      this.$emit("pageCreated", {
         pageTitle: this.pageTitle,
         content: this.content,
         link: {
@@ -80,11 +90,19 @@ export default {
         },
         published: this.published,
       });
+
       this.pageTitle = "";
       this.content = "";
       this.linkText = "";
       this.linkUrl = "";
       this.published = true;
+    },
+  },
+  watch: {
+    pageTitle(newTitle, oldTitle) {
+      if (this.linkText == oldTitle) {
+        this.linkText = newTitle;
+      }
     },
   },
 };
